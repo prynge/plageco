@@ -1,0 +1,67 @@
+.logo{
+		width: 20%;
+   	 }
+.navi{
+width: 30%;
+margin-right: 70px;
+
+
+}
+.navii{
+	width: 60%;
+	font-size: 18px;
+	font-weight: bold;
+
+}
+.slidee{
+	float: left;
+	width: 350px;
+}
+
+.slides{
+	width: 3300px;
+	animation: glisse 15s infinite;
+}
+
+.slider{
+	width: 1000px;
+	height: 200px;
+	overflow: hidden;
+	margin-left: 100px;				
+}
+
+.carto{
+	text-shadow: 0px 0px 5px yellow;
+}
+
+
+@keyframes glisse {
+	0%{
+		transform: translateX(0px);
+	}
+	33%{
+		transform: translateX(-200px);
+	}
+	66%{
+		transform: translateX(-400px);
+	}
+	100%{
+		transform: translateX(-600px);
+	}
+	/*80%{
+		transform: translateX(-800px);
+	}
+	100%{
+		transform: translateX(-1200px);
+	}*/
+}
+footer{
+	border-top: 2px solid yellow;	
+	background-color: black;
+	color: white;
+}
+footer .center{
+	color: rgb(200, 200, 200);
+	padding-top: 50px;
+}
+
