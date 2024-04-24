@@ -1,0 +1,143 @@
+<div class="row">
+  <div class="col-lg-12">
+    <nb-card>
+      <nb-card-header>Ventes</nb-card-header>
+      <form [formGroup]="mainForm">
+        <nb-card-body class="row">
+          <div class="col-lg-3">
+            <div class="row">
+              <nb-card>
+                <nb-card-header>Client</nb-card-header>
+                <nb-card-body [formGroup]="nameForm">
+                  <div class="form-group row">
+                    <label for="inputCliName1" class="label col-sm-3 col-form-label">Nom</label>
+                    <div class="col-sm-9">
+                      <input formControlName="CliName" list="name-list" type="text"  nbInput fullWidth id="inputCliName1" placeholder="Nom du client"  name="nom" (change)="remplir('cli')" >
+                      <datalist id="name-list" >
+                        <option *ngFor="let cli of clients" value="{{cli.pseudo}}">{{cli.nom}} {{cli.prenom}}</option>
+                      </datalist>
+                    </div>
+                  </div>
+                  <div class="form-group row">
+                    <label for="inputCliFirstName2" class="label col-sm-3 col-form-label">Prénom</label>
+                    <div class="col-sm-9">
+                      <input formControlName="CliFirstName" type="text" nbInput fullWidth id="inputCliFirstName2" placeholder="Prénom du client"  name="prenom">
+                    </div>
+                  </div>
+                  <div class="form-group row">
+                    <label for="inputCliContact3" class="label col-sm-3 col-form-label">Contact</label>
+                    <div class="col-sm-9">
+                      <input formControlName="CliContact" type="number"nbInput fullWidth id="inputCliContact3" placeholder="Contact du client"  name="contact">
+                    </div>
+                  </div>
+                </nb-card-body>
+              </nb-card>
+            </div>
+            <div class="row">
+              <nb-card>
+                <nb-card-header>Produit</nb-card-header>
+                <nb-card-body [formGroup]="prodForm">
+                  <div class="form-group row">
+                      <label for="inputProdRef4" class="label col-sm-3 col-form-label">Référence</label>
+                      <div class="col-sm-9">
+                          <input type="text" list="prod-list" nbInput fullWidth id="inputProdRef4" placeholder="Référence du produit" (change)="remplir('pro')" formControlName="ProdRef" >
+                          <datalist id="prod-list" >
+                            <option *ngFor="let pro of prods" value="{{pro.ref}}">{{pro.lib}}</option>
+                          </datalist>
+                      </div>
+                  </div>
+                  <div class="form-group row">
+                      <label for="inputProdLib5" class="label col-sm-3 col-form-label">Libellé du produit</label>
+                      <div class="col-sm-9">
+                          <input type="text"  nbInput fullWidth id="inputProdLib5" placeholder="Libellé du produit"  formControlName="ProdLib">
+                      </div>
+                  </div>
+                  <div class="form-group row">
+                      <label for="inputProdPUHT6" class="label col-sm-3 col-form-label">Prix Unitaire HT</label>
+                      <div class="col-sm-9">
+                          <input type="number" nbInput fullWidth id="inputProdPUHT6" placeholder="PU HT" formControlName="ProdPUHT">
+                      </div>
+                  </div>
+                  <div class="form-group row">
+                      <label for="inputProdStock7" class="label col-sm-3 col-form-label">Stock</label>
+                      <div class="col-sm-9">
+                          <input type="number" nbInput fullWidth id="inputProdStock7" placeholder="Stock"  formControlName="ProdStock">
+                      </div>
+                  </div>
+                  <div class="form-group row">
+                      <label for="inputProdQte8" class="label col-sm-3 col-form-label">Quantité</label>
+                      <div class="col-sm-9">
+                          <input type="number" nbInput fullWidth id="inputProdQte8" placeholder="Quantité" formControlName="ProdQte">
+                      </div>
+                  </div>
+
+                  <div class="form-group row">
+                      <div class="offset-sm-3 col-sm-9">
+                          <button type="button" nbButton (click)="ajouter_bouton(); produi.add(produit);" status="primary">Ajouter</button>
+                      </div>
+                  </div>
+                </nb-card-body>
+              </nb-card>
+            </div>
+          </div>
+          <div class="col-lg-6">
+              <ngx-smart-table #produi></ngx-smart-table>
+          </div>
+          <div class="col-lg-3">
+            <nb-card>
+              <nb-card-header>Vente</nb-card-header>
+              <nb-card-body>
+
+                <div class="form-group row">
+                    <label class="col-sm-3 label">Remise:</label>
+                    <div class="col-sm-9">
+                        <div class="row">
+                            <div class="col-sm-5">
+                                <nb-radio-group name="option" id="option" formControlName="Option" >
+                                    <nb-radio value="Montant" (click)="disable()" >Montant</nb-radio>
+                                    <nb-radio value="Taux"  (click)="disable()" >Taux</nb-radio>
+                                </nb-radio-group>
+                            </div>
+                            <div class="col-sm-7">
+                                <input type="number" nbInput fullWidth id="inputRmMtt9" placeholder="Montant" formControlName="RmMtt" (change)="calculRemise()">
+                                <input type="number"   nbInput fullWidth id="inputRmTaux10" placeholder="Taux" formControlName="RmTaux" (change)="calculRemise()">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="inputMtHt11" class="label col-sm-3 col-form-label">Montant HT</label>
+                    <div class="col-sm-9">
+                        <input type="number"  nbInput fullWidth id="inputMtHt11" placeholder="Montant HT" formControlName="MtHt">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="inputTVA12" class="label col-sm-3 col-form-label">TVA 18%</label>
+                    <div class="col-sm-9">
+                        <input type="number"  nbInput fullWidth id="inputTVA12" placeholder="TVA" formControlName="TVA">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="inputMtTTC13" class="label col-sm-3 col-form-label">Montant TTC</label>
+                    <div class="col-sm-9">
+                        <input type="number"  nbInput fullWidth id="inputMtTTC13" placeholder="Montant TTC" formControlName="MtTTC" >
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="offset-sm-3 col-sm-9">
+                        <button type="button" (click)="vendre_produit(); produi.reset();" nbButton status="primary">Vendre</button>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="offset-sm-3 col-sm-9">
+                        <button type="reset" nbButton status="danger">Recommencer</button>
+                    </div>
+                </div>
+              </nb-card-body>
+            </nb-card>
+          </div>
+        </nb-card-body>
+      </form>
+    </nb-card>
+  </div>
+</div>

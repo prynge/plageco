@@ -1,0 +1,60 @@
+<div class="row">
+  <div class="col-lg-12">
+    <nb-card>
+      <nb-card-header>Entrées</nb-card-header>
+      <nb-card-body class="row mx-auto">
+        <form [formGroup]="mainForm" >
+           <div class="form-group row">
+             <label for="inputRef1" class="label col-sm-4 col-form-label">Référence :</label>
+             <div class="col-sm-8">
+               <input  list="prod-list" type="text"  nbInput fullWidth id="inputRef1" formControlName="ProdRef" placeholder="Référence du produit" (change)="remplir()">
+               <datalist id="prod-list" >
+                  <option *ngFor="let pro of prods" value="{{pro.ref}}">{{pro.lib}}</option>
+                </datalist>
+             </div>
+           </div>
+           <div class="form-group row">
+             <label for="inputLib2" class="label col-sm-4 col-form-label">Libellé :</label>
+             <div class="col-sm-8">
+               <input type="text" formControlName="ProdLib" nbInput fullWidth id="inputLib2" placeholder="Libellé du produit">
+             </div>
+           </div>
+           <div class="form-group row">
+             <label for="inputPUHT3" class="label col-sm-4 col-form-label">Prix Unitaire HT :</label>
+             <div class="col-sm-8">
+               <input type="text" formControlName="ProdPUHT"  nbInput fullWidth id="inputPUHT3" placeholder="PU HT">
+             </div>
+           </div>
+           <div class="form-group row">
+             <label for="inputStk4" class="label col-sm-4 col-form-label">Stock :</label>
+             <div class="col-sm-8">
+               <input type="text" formControlName="ProdStock"  nbInput fullWidth id="inputStk4" placeholder="Stock">
+             </div>
+           </div>
+           <div class="form-group row">
+             <label for="inputQte5" class="label col-sm-4 col-form-label">Seuil :</label>
+             <div class="col-sm-8">
+               <input type="number" formControlName="ProdSeuil" nbInput fullWidth id="inputQte5" placeholder="Seuil">
+             </div>
+           </div>
+           <div class="form-group row">
+             <label for="inputQte5" class="label col-sm-4 col-form-label">Quantité :</label>
+             <div class="col-sm-8">
+               <input type="number" formControlName="ProdQte" nbInput fullWidth id="inputQte5" placeholder="Qté">
+             </div>
+           </div>
+           <div class="form-group row">
+               <div class="offset-sm-3 col-sm-9">
+                   <button type="reset" nbButton status="primary">Recommencer</button>
+               </div>
+           </div>
+           <div class="form-group row">
+               <div class="offset-sm-3 col-sm-9">
+                   <button type="button" nbButton (click)="ajouter()" status="success">Ajouter</button>
+               </div>
+           </div>
+        </form>
+      </nb-card-body>
+    </nb-card>
+  </div>
+</div>

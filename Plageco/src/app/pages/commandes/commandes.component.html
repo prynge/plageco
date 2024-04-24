@@ -1,0 +1,127 @@
+<div class="row">
+  <div class="col-lg-12">
+    <nb-card>
+      <nb-card-header>Commandes</nb-card-header>
+      <form [formGroup]="mainForm" >
+        <nb-card-body class="row">
+          <div class="col-lg-3">
+            <div class="row">
+              <nb-card>
+                <nb-card-header>Fournisseur</nb-card-header>
+                <nb-card-body [formGroup]="frsForm">
+                  <div class="form-group row">
+                    <label for="inputFrsName6" class="label col-sm-3 col-form-label">Fournisseur :</label>
+                    <div class="col-sm-9">
+                      <input list="frs-list" type="text" nbInput fullWidth id="inputFrsName6" placeholder="Fournisseur" formControlName="FrsName" (change)="remplir('frs')">
+                      <datalist id="frs-list" >
+                        <option *ngFor="let frs of frss" value="{{frs.id}}">{{frs.nom}} - {{frs.adresse}}</option>
+                      </datalist>
+                    </div>
+                  </div>
+                  <div class="form-group row">
+                    <label for="inputFrsAdress7" class="label col-sm-3 col-form-label">Adresse :</label>
+                    <div class="col-sm-9">
+                      <input type="text" nbInput fullWidth id="inputFrsAdress7" placeholder="Adresse du Fournisseur" formControlName="FrsAdress">
+                    </div>
+                  </div>
+                  <div class="form-group row">
+                    <label for="inputFrsTel8" class="label col-sm-3 col-form-label">Téléphone :</label>
+                    <div class="col-sm-9">
+                      <input type="number" nbInput fullWidth id="inputFrsTel8" placeholder="Téléphone du Fournisseur" formControlName="FrsTel">
+                    </div>
+                  </div>
+                  <div class="form-group row">
+                    <label for="inputFrsMail9" class="label col-sm-3 col-form-label">Mail :</label>
+                    <div class="col-sm-9">
+                      <input type="mail" nbInput fullWidth id="inputFrsMail9" placeholder="adresse mail du Fournisseur" formControlName="FrsMail">
+                    </div>
+                  </div>
+                </nb-card-body>
+              </nb-card>
+            </div>
+            <div class="row">
+              <nb-card>
+                <nb-card-header>Produit</nb-card-header>
+                <nb-card-body [formGroup]="prodForm">
+                  <div class="form-group row">
+                    <label for="inputProdRef1" class="label col-sm-3 col-form-label">Référence :</label>
+                    <div class="col-sm-9">
+                      <input list="prod-list" type="text" nbInput fullWidth id="inputProdRef1" placeholder="Référence du produit" (change)="remplir('pro')" formControlName="ProdRef">
+                      <datalist id="prod-list" >
+                        <option *ngFor="let pro of prods" value="{{pro.ref}}">{{pro.lib}}</option>
+                      </datalist>
+                    </div>
+                  </div>
+                  <div class="form-group row">
+                    <label for="inputProdLib2" class="label col-sm-3 col-form-label">Libellé du produit :</label>
+                    <div class="col-sm-9">
+                      <input type="text" nbInput fullWidth id="inputProdLib2" placeholder="Libellé du produit"  formControlName="ProdLib">
+                    </div>
+                  </div>
+                  <div class="form-group row">
+                    <label for="inputProdPUHT3" class="label col-sm-3 col-form-label">Prix Unitaire HT</label>
+                    <div class="col-sm-9">
+                      <input type="number" nbInput fullWidth id="inputProdPUHT3" placeholder="PU HT" formControlName="ProdPUHT">
+                    </div>
+                  </div>
+                  <div class="form-group row">
+                    <label for="inputProdStock4" class="label col-sm-3 col-form-label">Stock</label>
+                    <div class="col-sm-9">
+                      <input type="number" nbInput fullWidth id="inputProdStock4" placeholder="Stock" formControlName="ProdStock">
+                    </div>
+                  </div>
+                  <div class="form-group row">
+                    <label for="inputProdQte5" class="label col-sm-3 col-form-label">Quantité :</label>
+                    <div class="col-sm-9">
+                      <input type="number" nbInput fullWidth id="inputProdQte5" placeholder="Quantité"  formControlName="ProdQte">
+                    </div>
+                  </div>
+
+                  <div class="form-group row">
+                    <div class="offset-sm-3 col-sm-9">
+                      <button type="button" nbButton (click)="ajouter_bouton(); produi.add(produit);" status="primary">Ajouter</button>
+                    </div>
+                  </div>
+                </nb-card-body>
+              </nb-card>
+            </div>
+          </div>
+          <div class="col-lg-6">
+            <ngx-smart-table #produi></ngx-smart-table>
+          </div>
+          <div class="col-lg-3">
+            <nb-card>
+              <nb-card-header></nb-card-header>
+              <nb-card-body>
+                <div class="form-group row">
+                  <label for="inputLivLieu10" class="label col-sm-3 col-form-label">Lieu :</label>
+                  <div class="col-sm-9">
+                    <input list="liv-list" type="text" nbInput fullWidth id="inputLivLieu10" placeholder="Lieu de livraison" formControlName="LivLieu">
+                    <datalist id="liv-list" >
+                        <option *ngFor="let liv of livs" value="{{liv.lieu}}"></option>
+                      </datalist>
+                  </div>
+                </div>
+                <div class="form-group row">
+                    <div class="offset-sm-3 col-sm-9">
+                        <button type="submit" (click)="commander_produit(); produi.reset();" nbButton status="primary">Commander</button>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="offset-sm-3 col-sm-9">
+                        <button type="button" nbButton status="warning">Imprimer</button>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="offset-sm-3 col-sm-9">
+                        <button type="reset" nbButton status="danger">Recommencer</button>
+                    </div>
+                </div>
+              </nb-card-body>
+            </nb-card>
+          </div>
+        </nb-card-body>
+      </form>
+    </nb-card>
+  </div>
+</div>

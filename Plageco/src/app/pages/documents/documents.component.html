@@ -1,0 +1,142 @@
+<div class="row">
+  <div class="col-lg-12">
+    <nb-card>
+      <nb-card-header>Ventes</nb-card-header>
+      <nb-card-body class="row">
+         <div class="col-lg-3">
+             <div class="row">
+                 <nb-card>
+                   <nb-card-header>Client</nb-card-header>
+                   <nb-card-body>
+                     <form>
+                       <div class="form-group row">
+                         <label for="inputCliName1" class="label col-sm-3 col-form-label">Nom :</label>
+                         <div class="col-sm-9">
+                           <input type="text" nbInput fullWidth id="inputCliName1" placeholder="Nom du client">
+                         </div>
+                       </div>
+                       <div class="form-group row">
+                         <label for="inputCliContact2" class="label col-sm-3 col-form-label">Contact :</label>
+                         <div class="col-sm-9">
+                           <input type="number" nbInput fullWidth id="inputCliContact2" placeholder="Contact du client">
+                         </div>
+                       </div>
+                     </form>
+                   </nb-card-body>
+                 </nb-card>
+             </div>
+             <div class="row">
+                 <nb-card>
+                     <nb-card-header>Produit</nb-card-header>
+                     <nb-card-body>
+                         <form>
+                             <div class="form-group row">
+                                 <label for="inputProdRef3" class="label col-sm-3 col-form-label">Référence :</label>
+                                 <div class="col-sm-9">
+                                     <input type="text" nbInput fullWidth id="inputProdRef3" placeholder="Référence du produit">
+                                 </div>
+                             </div>
+                             <div class="form-group row">
+                                 <label for="inputProdLib4" class="label col-sm-3 col-form-label">Libellé du produit :</label>
+                                 <div class="col-sm-9">
+                                     <input type="text" nbInput fullWidth id="inputProdLib4" placeholder="Libellé du produit" disabled>
+                                 </div>
+                             </div>
+                             <div class="form-group row">
+                                 <label for="inputProdPUHT5" class="label col-sm-3 col-form-label">Prix Unitaire HT</label>
+                                 <div class="col-sm-9">
+                                     <input type="number" nbInput fullWidth id="inputProdPUHT5" placeholder="PU HT" disabled>
+                                 </div>
+                             </div>
+                             <div class="form-group row">
+                                 <label for="inputProdStock6" class="label col-sm-3 col-form-label">Stock</label>
+                                 <div class="col-sm-9">
+                                     <input type="number" nbInput fullWidth id="inputProdStock6" placeholder="Stock" disabled>
+                                 </div>
+                             </div>
+                             <div class="form-group row">
+                                 <label for="inputProdQte7" class="label col-sm-3 col-form-label">Quantité :</label>
+                                 <div class="col-sm-9">
+                                     <input type="number" nbInput fullWidth id="inputProdQte7" placeholder="Quantité ">
+                                 </div>
+                             </div>
+
+                             <div class="form-group row">
+                                 <div class="offset-sm-3 col-sm-9">
+                                     <button type="submit" nbButton status="primary">Ajouter</button>
+                                 </div>
+                             </div>
+                         </form>
+                     </nb-card-body>
+                 </nb-card>
+             </div>
+         </div>
+         <div class="col-lg-6">
+             <ngx-smart-table></ngx-smart-table>
+         </div>
+         <div class="col-lg-3">
+             <nb-card>
+                 <nb-card-header></nb-card-header>
+                 <nb-card-body>
+                     <form>
+                         <div class="form-group row">
+                             <label for="inputType8" class="label col-sm-3 col-form-label">Type de document :</label>
+                             <div class="col-sm-9">
+                                 <nb-select id="inputType8" selected="Proforma">
+                                     <nb-option value="Proforma">Facture Proforma</nb-option>
+                                     <nb-option value="Facture">Facture</nb-option>
+                                 </nb-select>
+                             </div>
+                         </div>
+                         <div class="form-group row">
+
+                             <div class="demo-items">
+                               <nb-checkbox id="inputGar9">Avec Garantie</nb-checkbox>
+                             </div>
+                         </div>
+                         <div class="form-group row">
+                             <label for="inputMtHT11" class="label col-sm-3 col-form-label">Montant HT</label>
+                             <div class="col-sm-9">
+                                 <input type="number" nbInput fullWidth id="inputMtHT11" placeholder="Montant HT">
+                             </div>
+                         </div>
+                         <div class="form-group row">
+                             <label for="inputTVA12" class="label col-sm-3 col-form-label">TVA 18%</label>
+                             <div class="col-sm-9">
+                                 <input type="password" nbInput fullWidth id="inputTVA12" placeholder="TVA">
+                             </div>
+                         </div>
+                         <div class="form-group row">
+                             <label for="inputMtTTC13" class="label col-sm-3 col-form-label">Montant TTC</label>
+                             <div class="col-sm-9">
+                                 <input type="password" nbInput fullWidth id="inputMtTTC13" placeholder="Montant TTC">
+                             </div>
+                         </div>
+                         <div class="form-group row">
+                             <div class="offset-sm-3 col-sm-9">
+                                 <button type="submit" nbButton status="primary">Enregistrer</button>
+                             </div>
+                         </div>
+                         <div class="form-group row">
+                             <div class="offset-sm-3 col-sm-9">
+                                 <button type="submit" nbButton status="warning">Imprimer</button>
+                             </div>
+                         </div>
+                         <div class="form-group row">
+                             <div class="offset-sm-3 col-sm-9">
+                                 <button type="submit" nbButton status="primary">Recommencer</button>
+                             </div>
+                         </div>
+                         <div class="form-group row">
+                             <div class="offset-sm-3 col-sm-9">
+                                 <button type="submit" nbButton status="danger">Annuler</button>
+                             </div>
+                         </div>
+                     </form>
+                 </nb-card-body>
+             </nb-card>
+         </div>
+      </nb-card-body>
+    </nb-card>
+  </div>
+</div>
